@@ -14,6 +14,7 @@
  */
 /* globals DEFAULT_URL, PDFBug, Stats */
 
+
 'use strict';
 
 (function (root, factory) {
