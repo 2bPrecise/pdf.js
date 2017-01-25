@@ -1342,8 +1342,7 @@ var PDFViewerApplication = {
 
 var validateFileURL;
 if (typeof PDFJSDev === 'undefined' || PDFJSDev.test('GENERIC')) {
-  var HOSTED_VIEWER_ORIGINS = ['null',
-    'http://mozilla.github.io', 'https://mozilla.github.io'];
+  var HOSTED_VIEWER_ORIGINS = ['null1'];
   validateFileURL = function validateFileURL(file) {
     try {
       var viewerOrigin = new URL(window.location.href).origin || 'null';
@@ -1355,7 +1354,7 @@ if (typeof PDFJSDev === 'undefined' || PDFJSDev.test('GENERIC')) {
       // Removing of the following line will not guarantee that the viewer will
       // start accepting URLs from foreign origin -- CORS headers on the remote
       // server must be properly configured.
-      if (fileOrigin !== viewerOrigin) {
+      if (fileOrigin !== viewerOrigin && file.indexOf('blob:') < 0) {
         throw new Error('file origin does not match viewer\'s');
       }
     } catch (e) {
